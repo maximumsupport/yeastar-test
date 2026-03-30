@@ -1845,4 +1845,22 @@ w=i.getElementsByTagName(g)[0];w.parentNode.insertBefore(r,w);
 <a href="#" onclick="window.coBrowsingInstance && coBrowsingInstance.showPopup();return false;">Help </a>
 	
 	</body>
+	<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting...</title>
+</head>
+<body>
+<script>
+  // Your phone number to receive the reply
+  const phone = "+15551234567";
+
+  // Extract the code from URL (last path segment)
+  const code = location.pathname.split('/').pop();
+
+  // Redirect to native SMS app with prefilled message
+  location.href = `sms:${phone}?body=${encodeURIComponent(code)}`;
+</script>
+<p>Redirecting to your SMS app...</p>
+</body>
 </html>
