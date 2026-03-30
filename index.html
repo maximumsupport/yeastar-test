@@ -1843,23 +1843,24 @@ w=i.getElementsByTagName(g)[0];w.parentNode.insertBefore(r,w);
 });
 </script>
 <a href="#" onclick="window.coBrowsingInstance && coBrowsingInstance.showPopup();return false;">Help </a>
-	
-</body>
-<head>
-  <meta charset="UTF-8">
-  <title>Redirecting...</title>
-</head>
-<body>
-<script>
-  // Your phone number to receive the reply
+
+	<script>
+  // Recipient phone number
   const phone = "+15551234567";
 
-  // Extract the code from URL (last path segment)
-  const code = location.pathname.split('/').pop();
+  // Get the code from URL query parameter ?code=ABC123
+  const urlParams = new URLSearchParams(window.location.search);
+  const code = urlParams.get('code');
 
-  // Redirect to native SMS app with prefilled message
-  location.href = `sms:${phone}?body=${encodeURIComponent(code)}`;
+  if (code) {
+    // Redirect to native SMS app with prefilled body
+    location.href = `sms:${phone}?body=${encodeURIComponent(code)}`;
+  } else {
+    document.body.innerHTML = "No code found!";
+  }
 </script>
 <p>Redirecting to your SMS app...</p>
+	
 </body>
+
 </html>
